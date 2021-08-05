@@ -22,7 +22,6 @@ class App extends Component {
     fetch('http://localhost:3000/workouts')
       .then(res => res.json())
       .then(json => {
-        console.log(json)
         this.setState({
           isLoaded: true,
           items: json,
@@ -42,7 +41,7 @@ class App extends Component {
       else{
         return (
           <div className="App">
-            <div>
+            {/* <div>
               <ul>
                 {items.map(item => (
                   <li key={item.id}>
@@ -55,7 +54,7 @@ class App extends Component {
                   </li>
                 ))}
               </ul>
-            </div>
+            </div> */}
             <div>
               <LineChart data={items}/>
             </div>

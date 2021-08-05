@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import LineChart from './components/LineChart';
 import './App.css';
 
+export const formatDate = (dateString) => {
+  const options = { year: "numeric", month: "long", day: "numeric" }
+  return new Date(dateString).toLocaleDateString(undefined, options)
+}
 class App extends Component {
 
   constructor(props) {
@@ -29,11 +33,6 @@ class App extends Component {
 
   render() {
 
-      const formatDate = (dateString) => {
-        const options = { year: "numeric", month: "long", day: "numeric" }
-        return new Date(dateString).toLocaleDateString(undefined, options)
-      }
-
       var { isLoaded, items } = this.state;
 
       if (!isLoaded) {
@@ -50,7 +49,7 @@ class App extends Component {
                     {formatDate(item.date)}
                     <ul>
                       {item.exercises.map(exercise => (
-                        <li>{exercise.name}: {exercise.weight}</li>
+                        <li key={exercise.id}>{exercise.name}: {exercise.weight}lbs</li>
                       ))}
                     </ul>
                   </li>
@@ -58,7 +57,7 @@ class App extends Component {
               </ul>
             </div>
             <div>
-              <LineChart/>
+              <LineChart data={items}/>
             </div>
           </div>
         );

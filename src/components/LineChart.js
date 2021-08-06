@@ -1,16 +1,15 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-import { formatDate } from '../App.js';
-
 const LineChart = (props) => {
-
-  const squat_dates = props.data.map(data => formatDate(data.date))
+  const squat_dates = props.data.map(data => String(data.date).slice(0,10))
+  
   const squats = []
   const barbell_rows = []
   const bench_press = []
   const overhead_press = []
   const deadlift = []
+
   props.data.map((data) => 
     {return data.exercises.map(data => data.name === "Squat" ? squats.push(data.weight) : 
       (data.name === "Barbell Row" ? barbell_rows.push(data.weight) : 
@@ -21,9 +20,12 @@ const LineChart = (props) => {
 
   const workout_a_dates = []
   const workout_b_dates = []
-  props.data.map(data => {return data.workout_type === "A" ? workout_a_dates.push(formatDate(data.date)) : 
-    data.workout_type === "B" ? workout_b_dates.push(formatDate(data.date)) : null  
+
+  props.data.map(data => {return data.workout_type === "A" ? workout_a_dates.push(String(data.date).slice(0,10)) : 
+    data.workout_type === "B" ? workout_b_dates.push(String(data.date).slice(0,10)) : null  
   })
+
+  console.log(workout_b_dates)
 
   return (
     <div>

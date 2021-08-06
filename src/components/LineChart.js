@@ -1,8 +1,10 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
+import { formatDate } from '../App';
+
 const LineChart = (props) => {
-  const squat_dates = props.data.map(data => String(data.date).slice(0,10))
+  const squat_dates = props.data.map(data => formatDate(data.date))
   
   const squats = []
   const barbell_rows = []
@@ -21,8 +23,8 @@ const LineChart = (props) => {
   const workout_a_dates = []
   const workout_b_dates = []
 
-  props.data.map(data => {return data.workout_type === "A" ? workout_a_dates.push(String(data.date).slice(0,10)) : 
-    data.workout_type === "B" ? workout_b_dates.push(String(data.date).slice(0,10)) : null  
+  props.data.map(data => {return data.workout_type === "A" ? workout_a_dates.push(formatDate(data.date)) : 
+    data.workout_type === "B" ? workout_b_dates.push(formatDate(data.date)) : null  
   })
 
   console.log(workout_b_dates)

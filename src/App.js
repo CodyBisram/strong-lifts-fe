@@ -4,8 +4,8 @@ import LineChart from './components/LineChart';
 import './App.css';
 
 export const formatDate = (dateString) => {
-  const options = { year: "numeric", month: "long", day: "numeric" }
-  return new Date(dateString).toLocaleDateString(undefined, options)
+  const options = { year: "numeric", month: "long", day: "numeric", timeZone: 'UTC' }
+  return new Date(dateString).toLocaleDateString("en-US", options)
 }
 class App extends Component {
 

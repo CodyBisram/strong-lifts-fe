@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import LineChart from './components/LineChart';
+import PostForm from './components/PostForm';
 import './App.css';
 
 export const formatDate = (dateString) => {
@@ -55,6 +56,9 @@ class App extends Component {
                 ))}
               </ul>
             </div> */}
+            <div>
+              <PostForm minDate={items[items.length-1].date}/>
+            </div>
             <div>
               <LineChart data={items}/>
             </div>

@@ -59,6 +59,14 @@ function PostForm(props) {
           (el,index) => (index === parseInt(e.target.id) && index === 0) ? { ...el, name: "Bench Press", weight: parseInt(e.target.value) } : 
           (index === parseInt(e.target.id) && index === 1  ? { ...el, name: "Barbell Row", weight: parseInt(e.target.value) } : 
           (index === parseInt(e.target.id) && index === 2  ? { ...el, name: "Squat", weight: parseInt(e.target.value) } : el)))}))}
+
+      if(workoutType === "B"){
+        setData(prevState => ({
+          ...prevState,
+          exercises: prevState.exercises.map(
+            (el,index) => (index === parseInt(e.target.id) && index === 0) ? { ...el, name: "Overhead Press", weight: parseInt(e.target.value) } : 
+            (index === parseInt(e.target.id) && index === 1  ? { ...el, name: "Deadlift", weight: parseInt(e.target.value) } : 
+            (index === parseInt(e.target.id) && index === 2  ? { ...el, name: "Squat", weight: parseInt(e.target.value) } : el)))}))}
   }
 
   function handleDate(date) {

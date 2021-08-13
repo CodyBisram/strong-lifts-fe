@@ -85,11 +85,10 @@ function PostForm(props) {
       exercises: data.exercises}
     })
     .then(res => {
-        console.log(res.data)
+      console.log(res.data)
+      props.fetchWorkouts();
     })
   }
-
-  console.log(data)
 
   return(
     <div>

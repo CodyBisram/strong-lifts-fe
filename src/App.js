@@ -12,9 +12,11 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    this.fetchWorkouts = this.fetchWorkouts.bind(this)
     this.state = {
       items: [],
       isLoaded: false,
+      shouldRedraw: false,
     }
   }
 
@@ -25,11 +27,21 @@ class App extends Component {
       .then(json => {
         this.setState({
           isLoaded: true,
+          shouldRedraw: false,
           items: json,
         })
       })
 
   }
+
+  fetchWorkouts = () => fetch('http://localhost:3000/workouts')
+  .then(res => res.json())
+  .then(json => {
+    this.setState({
+      isLoaded: true,
+      items: json,
+    })
+  })
 
   render() {
 
@@ -57,10 +69,10 @@ class App extends Component {
               </ul>
             </div> */}
             <div>
-              <PostForm minDate={items[items.length-1].date}/>
+              <PostForm minDate={items[items.length-1].date} fetchWorkouts={this.fetchWorkouts} />
             </div>
             <div>
-              <LineChart data={items}/>
+              <LineChart data={this.state.items} redraw={this.state.shouldRedraw} />
             </div>
           </div>
         );

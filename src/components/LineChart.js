@@ -4,6 +4,7 @@ import { Line } from 'react-chartjs-2';
 import { formatDate } from '../App';
 
 const LineChart = (props) => {
+
   const dates = props.data.map(data => formatDate(data.date))
   
   const squats = []
@@ -77,6 +78,7 @@ const LineChart = (props) => {
               }
             }        
           }}
+          redraw={props.redraw}
         />
       </div>
     </div>
